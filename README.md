@@ -41,8 +41,8 @@ Kalau belum, bisa unduh di: https://www.python.org/downloads/
 ### 2. Clone Repositori Ini
 
 ```bash
-git clone https://github.com/nama-kamu/nama-repo.git
-cd nama-repo
+git clone https://github.com/pantomath000/tralalelo_menyebrang.git
+cd tralalelo_menyebrang
 ```
 
 ### 3. Install Semua Dependensi
@@ -73,8 +73,6 @@ python test_game.py
 ```
 
 Gunakan tombol:
-- `W` → Maju
-- `S` → Mundur
 - `A` → Pindah kiri
 - `D` → Pindah kanan
 
