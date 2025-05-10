@@ -127,3 +127,14 @@ Bebas digunakan, dimodifikasi, dan dibagikan.
 4. buat sistem score
 5. buat level dan mekanik difficulty yang berubah tiap level
 6. Tampilkan wajah pengguna di background
+
+---
+
+## 📅 Logbook Mingguan
+
+| File                   | Fungsi                                                                                |
+|------------------------|---------------------------------------------------------------------------------------|
+| `Minggu ke-1`          | Membuat file recogniser.py untuk mendeteksi gesture tangan menggunakan webcam         |
+| `Minggu ke-2`          | Membuat game.py menggunakan library ursina untuk membuat logika dan mekanik game      |
+| `Minggu ke-3`          | Menambahkan asset karakter tralalelo dan mobil di game                                |
+| `tMinggu ke-4`         | Na                                                                                    |
