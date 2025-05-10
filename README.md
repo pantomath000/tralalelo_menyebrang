@@ -5,6 +5,13 @@ Sebuah game 3D sederhana ala **Frogger**, tapi dengan tampilan **3D** dan kontro
 
 ---
 
+## 👤 Anggota Kelompok
+1. Hijrah Fahrezi H.L.T. (122140175)
+2. M. Ihsan Nur Tsaqib (122140176)
+3. Roy Sebastian Surbakti (122140216)
+
+---
+
 ## 🎮 Fitur-Fitur
 
 - Jalan 3D dengan mobil-mobil yang datang dari kejauhan
