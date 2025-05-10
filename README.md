@@ -1,7 +1,7 @@
 
-# 🕹️ Game 3D Menyeberang Jalan dengan Kontrol Gestur Tangan
+# 🕹️ Tralalelo Menyebrang - Game 3D Menyeberang Jalan dengan Kontrol Gestur Tangan
 
-Sebuah game 3D sederhana ala **Frogger**, tapi dengan tampilan **side-scrolling** dan kontrol unik lewat **gestur tangan** menggunakan **OpenCV** dan **MediaPipe**. Dibuat menggunakan [Ursina Engine](https://www.ursinaengine.org/).
+Sebuah game 3D sederhana ala **Frogger**, tapi dengan tampilan **3D** dan kontrol unik lewat **gestur tangan** menggunakan **OpenCV** dan **MediaPipe**. Dibuat menggunakan [Ursina Engine](https://www.ursinaengine.org/).
 
 ---
 
