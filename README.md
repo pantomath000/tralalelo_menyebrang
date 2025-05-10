@@ -99,8 +99,8 @@ python test_recogniser.py
 ## 💻 Kompatibilitas Platform
 
 - ❌ Windows *(DLL error atau black screen)*
-- ❔ Linux *(Berjalan dengan lancar)*
-- ✅ macOS *(Belum dites)*
+- ✅ Linux *(Berjalan dengan lancar)*
+- ❔ macOS *(Belum dites)*
 
 ---
 
