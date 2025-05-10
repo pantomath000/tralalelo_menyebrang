@@ -26,7 +26,7 @@ Sebuah game 3D sederhana ala **Frogger**, tapi dengan tampilan **side-scrolling*
 | `test_game.py`         | Versi game tanpa gestur, pakai keyboard saja      |
 | `gesture_worker.py`    | Proses pendeteksi gestur berbasis webcam          |
 | `test_recogniser.py`   | Menjalankan tes kamera dan deteksi gestur langsung|
-| `gestures/recogniser.py` | Logika utama pengenalan gestur pakai MediaPipe |
+| `gestures/recogniser.py` | Logika utama pengenalan gestur pakai MediaPipe  |
 | `requirements.txt`     | Semua dependensi Python yang dibutuhkan           |
 
 ---
@@ -98,9 +98,9 @@ python test_recogniser.py
 
 ## 💻 Kompatibilitas Platform
 
-- ✅ Windows
-- ✅ Linux
-- ✅ macOS *(MediaPipe butuh penyesuaian lebih lanjut)*
+- ❌ Windows *(DLL error atau black screen)*
+- ❔ Linux *(Berjalan dengan lancar)*
+- ✅ macOS *(Belum dites)*
 
 ---
 
