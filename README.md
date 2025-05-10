@@ -65,6 +65,7 @@ python game.py
 
 - Pastikan webcam aktif dan ruangan cukup terang
 - Arahkan tangan ke kamera untuk mulai menggerakkan karakter
+- Ketika melakukan gesture menunjuk, pastikan bagian samping tangan (punggung tangan menghadap ke atas) menghadap ke kamera supaya gestur terbaca. Jika punggung tangan atau bagian telapak yang mengahadap ke kamera, gestur tidak akan terbaca.
 
 ### ⌨️ Mode Keyboard (tanpa webcam)
 
