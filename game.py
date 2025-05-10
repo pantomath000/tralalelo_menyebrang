@@ -1,9 +1,10 @@
-# game.py
 from ursina import *
 from multiprocessing import Process, Manager
 from gesture_worker import run_gesture_recognizer
 import time
 import random
+import zipfile
+import os
 
 app = Ursina()
 
@@ -29,12 +30,28 @@ shared_gesture = manager.Value('u', 'Stop')
 gesture_process = Process(target=run_gesture_recognizer, args=(shared_gesture,))
 gesture_process.start()
 
+# Unzip character assets if not already done
+asset_folder = 'assets/character/'
+if not os.path.exists(asset_folder):
+    os.makedirs(asset_folder)
+    with zipfile.ZipFile('assets/character.zip', 'r') as zip_ref:
+        zip_ref.extractall(asset_folder)
+
+# Load character model and texture
+player = Entity(
+    model=f'{asset_folder}scene.gltf', 
+    texture=f'{asset_folder}Material.001_baseColor.png',
+    scale=(0.2, 0.2, 0.2),  # Adjusted size
+    position=(START_X, 0, 0),  # Ensure character is on the ground
+    collider='box'  # Use box collider for collision detection
+)
+
+# Adjusting the collider to match the character size
+player.collider = BoxCollider(player, center=(0, 0, 0), size=(10, 10, 10))
+
 # Scene setup
 ground = Entity(model='plane', texture='white_cube', texture_scale=(25, 5),
                 scale=(50, 1, 10), color=color.gray, y=0)
-
-player = Entity(model='cube', color=color.orange, scale=(1, 2, 1),
-                position=(START_X, 1, 0), collider='box')
 
 camera.position = (0, 5, -20)
 camera.rotation_x = 10
@@ -54,7 +71,8 @@ gesture_display = Text(text='', position=window.top_left + Vec2(0.02, -0.05), sc
 
 def reset_game():
     global game_over, car_spawn_timer, last_valid_gesture, game_start_time, difficulty_multiplier
-    player.position = (START_X, 1, 0)
+    player.position = (START_X, 0, 0)
+    player.scale = (0.2, 0.2, 0.2)
     game_over = False
     car_spawn_timer = 0
     last_valid_gesture = 'Stop'
@@ -68,11 +86,14 @@ def reset_game():
 
 retry_button.on_click = reset_game
 
+# Car class using the .glb model for cars
 class Car(Entity):
     def __init__(self, x_lane, speed):
         super().__init__(
-            model='cube', color=color.red, scale=(2, 1, 1.5),
-            position=(x_lane, 0.5, CAR_SPAWN_Z), collider='box'
+            model='assets/airport_car.glb',  # Use the .glb car model
+            scale=(2, 1, 1.5),  # Adjust car size if needed
+            position=(x_lane, 0.5, CAR_SPAWN_Z), 
+            collider='box'  # Add collider to cars
         )
         self.speed = speed
 
@@ -112,8 +133,16 @@ def update():
     # Apply gesture-based movement
     if gesture == "Move Forward":
         player.x += 0.1
+        # Face right (positive x-direction relative to camera)
+        player.rotation_y = 270  # Fixed direction for moving forward
     elif gesture == "Move Backward":
         player.x -= 0.1
+        # Face left (negative x-direction relative to camera)
+        player.rotation_y = 90  # Fixed direction for moving backward
+
+    # If the character is stopped, face directly at the camera
+    if gesture == "Stop":
+        player.rotation_y = camera.rotation_y  # Face the camera
 
     player.x = clamp(player.x, START_X, FINISH_X)
     gesture_display.text = f"Gesture: {gesture}"
@@ -134,10 +163,13 @@ def update():
         spawn_car()
         car_spawn_timer = 0
 
+    # Update and check for collisions with cars
     for car in cars[:]:
         if car in scene.entities:
             car.update()
             if car.intersects(player).hit:
+                player.scale = (0.2, 0.05, 0.2)  # Make the character flat
+                player.position = (player.x, -0.1, player.z)
                 win_text.text = "Game Over!"
                 win_text.enabled = True
                 retry_button.enabled = True
