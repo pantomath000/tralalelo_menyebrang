@@ -8,7 +8,7 @@ Sebuah game 3D sederhana ala **Frogger**, tapi dengan tampilan **3D** dan kontro
 ## 🎮 Fitur-Fitur
 
 - Jalan 3D dengan mobil-mobil yang datang dari kejauhan
-- Kamera mengikuti karakter dari samping
+- Kamera mengikuti karakter
 - Karakter bisa dikendalikan dengan gestur tangan lewat webcam:
   - 👉 Tunjuk kanan → Jalan maju
   - 👈 Tunjuk kiri → Jalan mundur
